@@ -1,13 +1,14 @@
 import { useState } from "react";
 import categories from "./fake-data/all-categories";
 import products from "./fake-data/all-products";
+import { cleanCategory } from "./utility"; 
 import "./App.css";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
 
   const handleCategorySelection = (category) => {
-    const cleanedCategory = category.replace("FAKE: ", "").trim();
+    const cleanedCategory = cleanCategory(category);
     setActiveCategory(cleanedCategory);
   };
   
@@ -36,7 +37,7 @@ function App() {
             className={`category-button ${activeCategory === category ? "active-category" : ""}`}
             onClick={() => handleCategorySelection(category)}
           >
-            {category.replace("FAKE: ", "")}
+            {cleanCategory(category)}
           </button>
         ))}
       </div>
