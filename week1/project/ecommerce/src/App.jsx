@@ -1,58 +1,23 @@
-import { useState } from "react";
 import categories from "./fake-data/all-categories";
 import products from "./fake-data/all-products";
-import { cleanCategory } from "./utility"; 
+import { useCategoryFilter } from "./hooks/useCategoryFilter";
+import CategorySelector from "./components/CategorySelector";
+import ProductList from "./components/ProductList";
 import "./App.css";
 
 function App() {
-  const [activeCategory, setActiveCategory] = useState(null);
-
-  const handleCategorySelection = (category) => {
-    const cleanedCategory = cleanCategory(category);
-    setActiveCategory(cleanedCategory);
-  };
-  
-  const filteredProducts = activeCategory
-    ? products.filter((product) => {
-        const productCategory = product.category.toLowerCase().trim();
-        const selectedCategory = activeCategory.toLowerCase().trim();
-        return productCategory === selectedCategory;
-      })
-    : products;
+  const { activeCategory, handleCategorySelection, filteredProducts } = useCategoryFilter(products);
 
   return (
-    <div id="root">
+    <>
       <h1>Products</h1>
-
-      <div className="category-buttons">
-        <button
-          className={`category-button ${activeCategory === null ? "active-category" : ""}`}
-          onClick={() => setActiveCategory(null)}
-        >
-          Show All
-        </button>
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={`category-button ${activeCategory === category ? "active-category" : ""}`}
-            onClick={() => handleCategorySelection(category)}
-          >
-            {cleanCategory(category)}
-          </button>
-        ))}
-      </div>
-
-      <div className="product-list">
-        {filteredProducts.map((product) => (
-          <div key={product.id} className="product-card">
-            <img src={product.image} alt={product.title} />
-            <h3>{product.title}</h3>
-            <p>${product.price}</p>
-            <p>{product.category}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+      <CategorySelector 
+        categories={categories} 
+        activeCategory={activeCategory} 
+        onSelectCategory={handleCategorySelection} 
+      />
+      <ProductList products={filteredProducts} />
+    </>
   );
 }
 
