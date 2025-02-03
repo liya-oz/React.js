@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div id="root">
-      <h1>Ecommerce App</h1>
+      <h1>Products</h1>
 
       <div className="category-buttons">
         <button
