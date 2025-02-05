@@ -26,4 +26,4 @@ What you need to have done at the end of the week:
 - There should only be 1 category active at a time and the user should see which category is selected.
 - You need to deploy your app somewhere (using something like [netlify](https://www.netlify.com)) and put the link in your PR!
 
-Link to my app: <https://nimble-pika-f34156.netlify.app>
+Link to my app: <https://tranquil-sfogliatella-2d1858.netlify.app>

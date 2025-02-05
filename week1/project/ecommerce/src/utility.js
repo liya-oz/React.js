@@ -15,3 +15,7 @@ export function filterProductsByCategory(products, activeCategory) {
     (product) => cleanCategory(product.category) === selectedCategory,
   );
 }
+export function cleanTitle(title) {
+  if (!title) return '';
+  return title.replace(/^FAKE:\s*/, '');
+}
