@@ -1,6 +1,7 @@
 # Check screen size
 
-For this prep exercise we are actually going to use an online exercise. Have a look at the [following prompt](https://epic-react-exercises.vercel.app/react/advanced-hooks/4). To summarize:
+For this prep exercise we are actually going to use an online exercise. Have a look at the
+ [following prompt](https://epic-react-exercises.vercel.app/react/advanced-hooks/4). To summarize:
 
 > Create a hook to determine the window user's window screen size and update the view based on it. Use the [useDebugValue hook](https://reactjs.org/docs/hooks-reference.html#usedebugvalue) so that when a component uses the hook three different times, you'll be able to differentiate them on the The React DevTools browser extension.
 
