@@ -22,21 +22,19 @@ export function useFetchData(activeCategory) {
   }, []);
 
   useEffect(() => {
-    if (activeCategory) {
+    async function loadProducts() {
       setLoading(true);
       setError(null);
-      async function loadProducts() {
-        try {
-          const fetchedProducts = await fetchProducts(activeCategory);
-          setProducts(fetchedProducts);
-        } catch (err) {
-          setError('Failed to fetch products.');
-        } finally {
-          setLoading(false);
-        }
+      try {
+        const fetchedProducts = await fetchProducts(activeCategory);
+        setProducts(fetchedProducts);
+      } catch (err) {
+        setError('Failed to fetch products.');
+      } finally {
+        setLoading(false);
       }
-      loadProducts();
     }
+    loadProducts();
   }, [activeCategory]);
 
   return { categories, products, loading, error };
