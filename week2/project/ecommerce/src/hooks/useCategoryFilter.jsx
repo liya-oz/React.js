@@ -16,7 +16,7 @@ export function useCategoryFilter() {
         const fetchedProducts = await fetchProducts(activeCategory);
         setProducts(fetchedProducts);
       } catch (err) {
-        setError('Failed to fetch products.');
+        setError('Oops! Failed to upload products.');
       } finally {
         setLoading(false);
       }

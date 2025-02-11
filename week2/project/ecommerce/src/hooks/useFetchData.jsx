@@ -29,7 +29,7 @@ export function useFetchData(activeCategory) {
         const fetchedProducts = await fetchProducts(activeCategory);
         setProducts(fetchedProducts);
       } catch (err) {
-        setError('Failed to fetch products.');
+        setError('Oops! Failed to upload products.');
       } finally {
         setLoading(false);
       }

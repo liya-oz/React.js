@@ -4,6 +4,7 @@ import CategorySelector from './components/CategorySelector';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import { useFetchData } from './hooks/useFetchData';
+import Spinner from './components/Spinner';
 
 function App() {
   const [activeCategory, setActiveCategory] = useState('');
