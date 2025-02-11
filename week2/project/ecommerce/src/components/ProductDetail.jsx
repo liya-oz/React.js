@@ -27,10 +27,16 @@ function ProductDetail() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div data-testid="product-details-page">
-      <h2>{product?.title}</h2>
-      <p>{product?.description}</p>
-      <img src={product?.image} alt={product?.title} />
+    <div className="product-detail" data-testid="product-details-page">
+      <div className="product-detail-image">
+        <img src={product?.image} alt={product?.title} />
+      </div>
+      <div className="product-detail-info">
+        <h2>{product?.title}</h2>
+        <p>{product?.description}</p>
+        <p className="price">${product?.price}</p>
+        <p className="category">{product?.category}</p>
+      </div>
     </div>
   );
 }
