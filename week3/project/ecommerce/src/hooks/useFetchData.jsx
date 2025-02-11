@@ -1,41 +1,27 @@
 import { useState, useEffect } from 'react';
-import { fetchCategories, fetchProducts } from '../fetchData';
 
-export function useFetchData(activeCategory) {
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+export const useFetch = (url) => {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function loadCategories() {
-      try {
-        const fetchedCategories = await fetchCategories();
-        setCategories(fetchedCategories);
-      } catch (err) {
-        setError('Failed to fetch categories.');
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadCategories();
-  }, []);
-
-  useEffect(() => {
-    async function loadProducts() {
+    const fetchData = async () => {
       setLoading(true);
-      setError(null);
       try {
-        const fetchedProducts = await fetchProducts(activeCategory);
-        setProducts(fetchedProducts);
+        const response = await fetch(url);
+        const result = await response.json();
+        setData(result);
+        setError(null);
       } catch (err) {
-        setError('Oops! Failed to upload products.');
+        setError('Failed to load data.');
       } finally {
         setLoading(false);
       }
-    }
-    loadProducts();
-  }, [activeCategory]);
+    };
 
-  return { categories, products, loading, error };
-}
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
+};
