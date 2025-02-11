@@ -1,9 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import CategorySelector from './components/CategorySelector';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
-import './App.css';
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -26,7 +25,6 @@ function App() {
     const url = activeCategory
       ? `https://fakestoreapi.com/products/category/${activeCategory}`
       : 'https://fakestoreapi.com/products';
-
     fetch(url)
       .then((response) => response.json())
       .then((data) => setProducts(data))
@@ -34,44 +32,40 @@ function App() {
       .finally(() => setLoading(false));
   }, [activeCategory]);
 
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
+  const location = useLocation();
+
+  if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
   return (
-    <Router>
-      <div>
-        <h1>Products</h1>
+    <div>
+      {location.pathname === '/' && (
+        <>
+          <h1>Products</h1>
+          <CategorySelector
+            categories={categories}
+            activeCategory={activeCategory}
+            onSelectCategory={setActiveCategory}
+          />
+        </>
+      )}
 
-        {loading && <div className="spinner"></div>}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+      {loading && <div className="spinner"></div>}
 
-        {!loading && (
-          <>
-            <CategorySelector
-              categories={categories}
-              activeCategory={activeCategory}
-              onSelectCategory={setActiveCategory}
-            />
-
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <div className="app-header">
-                    <ProductList products={products} />
-                  </div>
-                }
-              />
-              <Route
-                path="/product/:id"
-                element={<ProductDetail />}
-              />
-            </Routes>
-          </>
-        )}
-      </div>
-    </Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="app-header">
+              <ProductList products={products} />
+            </div>
+          }
+        />
+        <Route
+          path="/product/:id"
+          element={<ProductDetail />}
+        />
+      </Routes>
+    </div>
   );
 }
 

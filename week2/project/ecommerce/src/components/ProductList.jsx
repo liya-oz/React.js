@@ -3,7 +3,7 @@ import ProductItem from './ProductItem';
 
 function ProductList({ products }) {
   return (
-    <div data-testid="products-page">
+    <div className="product-list" data-testid="products-page">
       {products.map((product) => (
         <Link to={`/product/${product.id}`} key={product.id} data-testid="product-link">
           <ProductItem product={product} />
