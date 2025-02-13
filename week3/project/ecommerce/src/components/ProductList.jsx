@@ -1,16 +1,14 @@
 import ProductItem from "./ProductItem";
 
-function ProductList({ products }) {
+function ProductList({ products = [] }) {
   return (
     <div className="product-list">
-      {products.map((product) => (
-        <ProductItem
-          key={product.id}
-          product={product}
-        />
+      {products?.map((product) => (
+        <ProductItem key={product.id} product={product} />
       ))}
     </div>
   );
 }
+
 
 export default ProductList;

@@ -1,6 +1,6 @@
 import { cleanCategory } from "../utility";
 
-function CategorySelector({ categories, activeCategory, onSelectCategory }) {
+function CategorySelector({ categories = [], activeCategory, onSelectCategory }) {
   return (
     <div className="category-buttons">
       <button
@@ -9,7 +9,7 @@ function CategorySelector({ categories, activeCategory, onSelectCategory }) {
       >
         Show All
       </button>
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <button
           key={category}
           className={`category-button ${activeCategory === category ? "active-category" : ""}`}
