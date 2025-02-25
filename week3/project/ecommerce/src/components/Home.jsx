@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFetch } from '../hooks/useFetchData'; // Adjusted path if needed
+import { useFetch } from '../hooks/useFetchData';
 import Spinner from './Spinner';
 import CategorySelector from './CategorySelector';
 import ProductList from './ProductList';
