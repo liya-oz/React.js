@@ -1,5 +1,5 @@
 import { cleanTitle } from "../utility";
-
+import '../styles/ProductItem.css';
 function ProductItem({ product }) {
   return (
     <div className="product-card">

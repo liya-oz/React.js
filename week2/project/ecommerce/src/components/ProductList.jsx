@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ProductItem from './ProductItem';
+import '../styles/ProductList.css';
 
 function ProductList({ products }) {
   return (
