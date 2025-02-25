@@ -28,4 +28,4 @@ What you need to have done at the end of the week:
 
 
 
-- I deployed the app to [Netlify](https://gleeful-trifle-154673.netlify.app). Try it out! +
+- I deployed the app to [Netlify](https://wondrous-semolina-673177.netlify.app). Try it out! +
