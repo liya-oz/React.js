@@ -1,48 +1,17 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
-import CategorySelector from './components/CategorySelector';
-import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
-import Spinner from './components/Spinner';
-import Header from "./components/Header";
-import Favorites from "./components/Favorites";
-import { FavoritesProvider } from "./context/FavoritesContext";
-import { useFetch } from './hooks/useFetchData';
+import Header from './components/Header';
+import Favorites from './components/Favorites';
+import { FavoritesProvider } from './context/FavoritesContext';
+import Home from './components/Home';
 
 function App() {
-  const [activeCategory, setActiveCategory] = useState('');
-  const { data: categories, loading: categoriesLoading, error: categoriesError } = useFetch('https://fakestoreapi.com/products/categories');
-  const { data: products, loading: productsLoading, error: productsError } = useFetch(
-    activeCategory ? `https://fakestoreapi.com/products/category/${activeCategory}` : 'https://fakestoreapi.com/products'
-  );
-
   return (
     <FavoritesProvider>
       <div>
         <Header />
-        {(categoriesError || productsError) && (
-          <div style={{ color: 'red' }}>
-            {categoriesError || productsError}
-          </div>
-        )}
-        {(categoriesLoading || productsLoading) && <Spinner />}
-
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <CategorySelector
-                  categories={categories}
-                  activeCategory={activeCategory}
-                  onSelectCategory={setActiveCategory}
-                />
-                <div className="app-header">
-                  <ProductList products={products} />
-                </div>
-              </>
-            }
-          />
+          <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
