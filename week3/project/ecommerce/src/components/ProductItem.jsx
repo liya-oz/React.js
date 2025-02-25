@@ -1,4 +1,3 @@
-import { cleanTitle } from "../utility";
 import heartSolid from "../assets/heart-solid.svg";
 import heartRegular from "../assets/heart-regular.svg";
 import { useFavorites } from "../context/FavoritesContext";
@@ -15,7 +14,7 @@ function ProductItem({ product }) {
       <button className="favorite-button" onClick={() => toggleFavorite(product.id)}>
         <img src={isFavorite ? heartSolid : heartRegular} alt="Favorite" />
       </button>
-      <h3>{cleanTitle(product.title)}</h3>
+      <h3>{product.title}</h3>
       <p className="price">${product.price}</p>
       <p className="category">{product.category}</p>
     </div>

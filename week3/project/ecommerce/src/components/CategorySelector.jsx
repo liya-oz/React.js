@@ -1,4 +1,3 @@
-import { cleanCategory } from "../utility";
 import '../styles/CategorySelector.css';
 
 function CategorySelector({ categories = [], activeCategory, onSelectCategory }) {
@@ -16,7 +15,7 @@ function CategorySelector({ categories = [], activeCategory, onSelectCategory })
           className={`category-button ${activeCategory === category ? "active-category" : ""}`}
           onClick={() => onSelectCategory(category)}
         >
-          {cleanCategory(category)}
+          {category}
         </button>
       ))}
     </div>
