@@ -1,4 +1,5 @@
 import { cleanCategory } from "../utility";
+import '../styles/CategorySelector.css';
 
 function CategorySelector({ categories = [], activeCategory, onSelectCategory }) {
   return (

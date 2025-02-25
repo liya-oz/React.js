@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useFavorites } from "../context/FavoritesContext";
 import ProductItem from "./ProductItem";
+import '../styles/Favorites.css';
 
 function Favorites() {
   const { favorites } = useFavorites();

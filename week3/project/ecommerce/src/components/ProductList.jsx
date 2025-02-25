@@ -1,4 +1,5 @@
 import ProductItem from "./ProductItem";
+import '../styles/ProductList.css';
 
 function ProductList({ products = [] }) {
   return (
